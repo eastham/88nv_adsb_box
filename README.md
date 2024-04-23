@@ -14,6 +14,7 @@ Install process as of 4/5/24:
 - Pull this repo to the home directory: cd ~ ; git clone https://github.com/eastham/88nv_adsb_box.git
 - Copy over files from 88nv_adsb_box directory into active filesystem 
 - Change ssh password
+- Consider adding other feeders
 
 
 ![Image of device](adsb_box.jpg?raw=true "Image of Device")
