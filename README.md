@@ -7,14 +7,23 @@ Files in here enable:
 - Outdated mods to tar1090 -- moved to fork of tar1090 at https://github.com/eastham/tar1090) -- see below on how to pull them in
 
 Install process as of 4/5/24:
-- Flash adsbx (or airplanes.live) image
-- Boot it up, setup wifi
+- Flash adsbx (or airplanes.live) image -- adsbx-8.2.220910.zip is known to work: https://downloads.adsbexchange.com/downloads/adsbx-8.2.220910.zip
+- Boot up sdcard, setup wifi
 - (Optional: run update from UI, updates raspbian)
-- Update tar1090 to latest from our forked repo: sudo bash -c "rm -rf /usr/local/share/tar1090/git ;  $(wget -nv -O - https://github.com/eastham/tar1090/raw/master/install.sh)"
+- Update tar1090 to latest from our forked repo:
+  - sudo bash -c "rm -rf /usr/local/share/tar1090/git ;  $(wget -nv -O - https://github.com/eastham/tar1090/raw/master/install.sh)"
 - Pull this repo to the home directory: cd ~ ; git clone https://github.com/eastham/88nv_adsb_box.git
 - Copy over files from 88nv_adsb_box directory into active filesystem 
 - Change ssh password
 - Consider adding other feeders
+  - instructions for airplanes.live: https://airplanes.live/how-to-feed/
 
+
+Optional commands to set up display, if installed:
+- sudo apt-get install pip
+- sudo raspi-config, enable i2c
+- sudo pip3 install Adafruit_GPIO
+- sudo pip3 install Adafruit_SSD1306
+- sudo pip3 install netifaces
 
 ![Image of device](adsb_box.jpg?raw=true "Image of Device")
