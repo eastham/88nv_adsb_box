@@ -4,7 +4,6 @@ Files in here enable:
 - Logging of all aircraft seen at 1/5 Hz
 - Support for a small OLED (SSD1306) display that shows system status and IP address
 - Support for an illuminated button that allows easy reset of the wifi setup to stock each year (maybe not needed if we switch to Ethernet)
-- Outdated mods to tar1090 -- moved to fork of tar1090 at https://github.com/eastham/tar1090) -- see below on how to pull them in
 
 Install process as of 4/5/24:
 - Flash adsbx (or airplanes.live) image -- adsbx-8.2.220910.zip is known to work: https://downloads.adsbexchange.com/downloads/adsbx-8.2.220910.zip
