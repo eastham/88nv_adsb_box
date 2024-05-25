@@ -170,7 +170,7 @@ def gettemp():
 ### START
 
 pinsetup()
-GPIO.add_event_detect(BUTTONPIN, GPIO.FALLING, callback=button_callback, bouncetime=150)
+#GPIO.add_event_detect(BUTTONPIN, GPIO.FALLING, callback=button_callback, bouncetime=150)
 #try:
 screensetup()
 #except:
@@ -201,9 +201,11 @@ while True:
     writeline(0, str)
 
     str = f"1090 aircraft: {getstats(STATS1090)}"
+    #print(str)
     writeline(2, str)
      
     str = f"978 aircraft: {getstats(STATS978)}"
+    #print(str)
     writeline(3, str)
 
     str = f"Peak RSSI: {getrssi()}"
