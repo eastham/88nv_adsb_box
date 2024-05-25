@@ -1,0 +1,14 @@
+[Unit]
+Description=Meshtastic/ADS-B bridge
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=60
+User=eastham
+ExecStart=/home/pi/mesh_adsb/bin/python3 /home/pi/mesh_adsb/mesh_receiver.py --host localhost --path /home/eastham/mesh_adsb/icao_map.yaml
+
+[Install]
+WantedBy=multi-user.target

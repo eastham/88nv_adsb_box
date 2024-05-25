@@ -1,0 +1,14 @@
+[Unit]
+Description=OLED ADS-B status driver
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=60
+User=eastham
+ExecStart=/home/eastham/oled/bin/python3 /home/eastham/oled/monitor.py
+
+[Install]
+WantedBy=multi-user.target
