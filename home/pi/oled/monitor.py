@@ -4,16 +4,17 @@ import time
 import os
 import threading
 import RPi.GPIO as GPIO
-import Adafruit_GPIO.SPI as SPI
-import Adafruit_SSD1306
+#import Adafruit_GPIO.SPI as SPI
+#import Adafruit_SSD1306
+import adafruit_ssd1306
 from PIL import ImageFont, Image, ImageDraw
 from netifaces import interfaces, ifaddresses, AF_INET
 
 LEDPIN = 4
 BUTTONPIN = 27
 
-STATS1090 = "/home/pi/status1090.json"
-STATS978 = "/home/pi/status978.json"
+STATS1090 = "/usr/share/graphs1090/data-symlink/data/status.json"
+STATS978 = "/usr/share/graphs1090/978-symlink/data/status.json"
 DETAILSTATS = "/usr/share/graphs1090/data-symlink/data/stats.json"
 WLANFILE = "/home/pi/wpa_supp.default"
 WLANTARGET = "/etc/wpa_supplicant/wpa_supplicant.conf"
@@ -124,15 +125,20 @@ def screensetup():
 
     time.sleep(1)
     print("starting screen setup")
-    disp = Adafruit_SSD1306.SSD1306_128_64(rst=None)    
-    disp.begin()
+    #disp = Adafruit_SSD1306.SSD1306_128_32(rst=RST)
+    from board import SCL, SDA
+    import adafruit_ssd1306
+    import busio
+    i2c = busio.I2C(SCL, SDA)
+    disp = adafruit_ssd1306.SSD1306_I2C(128, 64, i2c)
+    #disp.begin()
 
     time.sleep(1)
     # Clear display.
-    disp.clear()
-    disp.display()
+    disp.fill(0)
+    disp.show()
 
-    font = ImageFont.load_default()
+    font = ImageFont.load_default(size=11)
     width = disp.width
     height = disp.height
     image = Image.new('1', (width, height))
@@ -152,7 +158,7 @@ def writeline(linenum, text):
 def showtext():
     if disp:
         disp.image(image)
-        disp.display()
+        disp.show()
 
 def gettemp():
     fn = "/sys/class/thermal/thermal_zone0/temp"
@@ -172,8 +178,8 @@ screensetup()
     
 clearscreen()
 writeline(0, "Booting...")
-writeline(2, "Hold button to reset")
-writeline(3, "      wifi")
+#writeline(2, "Hold button to reset")
+#writeline(3, "      wifi")
 showtext()
 
 for x in range(10):
@@ -216,5 +222,4 @@ while True:
 
     while pauseloop:
           time.sleep(.25)
-
 
