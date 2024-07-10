@@ -38,7 +38,7 @@ XXX futz around with ttyusb0 permissions
 sudo apt-get remove gpsd
 
 - Update tar1090 to latest from our forked repo:
-  - sudo bash -c "rm -rf /usr/local/share/tar1090/git ;  $(wget -nv -O - https://github.com/eastham/tar1090/raw/master/install.sh)"
+  - sudo bash -c "rm -rf /usr/local/share/tar1090/git ;  $(wget -nv -O - https://github.com/eastham/tar1090/raw/redo/install.sh)"
 
 - go to localhost web ui, update receiver position and radio config
 
