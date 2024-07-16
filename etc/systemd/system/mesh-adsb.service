@@ -7,8 +7,8 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=60
-User=eastham
-ExecStart=/home/pi/mesh_adsb/bin/python3 /home/pi/mesh_adsb/mesh_receiver.py --host localhost --path /home/eastham/mesh_adsb/icao_map.yaml
+User=pi
+ExecStart=/home/pi/mesh_adsb/bin/python3 /home/pi/mesh_adsb/mesh_receiver.py --host 192.168.87.56 --path /home/pi/mesh_adsb/icao_map.yaml
 
 [Install]
 WantedBy=multi-user.target

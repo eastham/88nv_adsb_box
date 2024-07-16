@@ -1,0 +1,21 @@
+# readsb service for systemd
+
+[Unit]
+Description=Send detected takeoffs/landings to appsheet/PTS database
+Wants=network.target
+After=network.target
+After=readsb.service
+
+[Service]
+SyslogIdentifier=op_pusher
+WorkingDirectory=/home/pi/adsb_actions
+User=pi
+ExecStart=/home/pi/adsb_actions/bin/python3 /home/pi/adsb_actions/src/op_pusher/op_pusher.py --rules /home/pi/adsb_actions/src/op_pusher/rules.yaml --ipaddr 127.0.0.1 --port 30006
+Type=simple
+Restart=always
+RestartSec=15
+StartLimitInterval=1
+StartLimitBurst=10
+
+[Install]
+WantedBy=default.target
